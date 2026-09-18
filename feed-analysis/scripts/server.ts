@@ -83,6 +83,6 @@ const server = createServer(async (req, res) => {
     res.writeHead(200, { 'content-type': `${file[1]}; charset=utf-8` }); res.end(content);
   } catch (error) { if (!res.headersSent) json({ ok: false, error: safeError(error) }, 400); }
 });
-server.listen(port, '127.0.0.1', () => console.log(`Feed Analysis is ready at ${origin} (provider: ${config.provider}; key ${Redacted.value(config.apiKey) ? 'configured' : 'missing'})`));
+server.listen(port, '127.0.0.1', () => console.log(`jevzen is ready at ${origin} (provider: ${config.provider}; key ${Redacted.value(config.apiKey) ? 'configured' : 'missing'})`));
 const shutdown = () => { server.close(); void runtime.dispose().then(() => process.exit(0)); };
 process.once('SIGINT', shutdown); process.once('SIGTERM', shutdown);

@@ -23,12 +23,14 @@ export interface Analysis {
   topicProbabilities: Record<Topic, number>; model: string; inputTokens: number;
   outputTokens: number; rubric: string; provider?: string;
 }
+export type PhotoTheme = 'zen' | 'cats';
 export interface Settings {
   enabled: boolean; rules: string; strength: number;
-  collapse: boolean; threshold: number;
+  // Retain the stored collapse key for existing installs; X now uses photo replacement.
+  collapse: boolean; threshold: number; photoTheme: PhotoTheme;
 }
 export const DEFAULT_SETTINGS: Settings = {
-  enabled: true, rules: DEFAULT_RULES, strength: 0.75, collapse: true, threshold: 0.94,
+  enabled: true, rules: DEFAULT_RULES, strength: 0.75, collapse: true, threshold: 0.94, photoTheme: 'zen',
 };
 export const QUESTIONS = {
   turnDown: { type: 'noul', instructions: {
@@ -82,7 +84,7 @@ export function normalizeSettings(value: Partial<Settings> = {}): Settings {
   const num = (key: 'strength' | 'threshold', min: number, max: number) =>
     typeof value[key] === 'number' && Number.isFinite(value[key]) ? Math.min(max, Math.max(min, value[key]!)) : DEFAULT_SETTINGS[key];
   const rules = typeof value.rules === 'string' && value.rules.trim() && value.rules.trim().length <= MAX_RULES_LENGTH ? value.rules.trim() : DEFAULT_RULES;
-  return { enabled: bool('enabled'), rules, collapse: bool('collapse'), strength: num('strength', 0, 0.9), threshold: num('threshold', 0.75, 1) };
+  return { enabled: bool('enabled'), rules, collapse: bool('collapse'), strength: num('strength', 0, 0.9), threshold: num('threshold', 0.75, 1), photoTheme: value.photoTheme === 'cats' ? 'cats' : 'zen' };
 }
 export function treatment(analysis: Analysis | undefined, settings: Settings, revealed = false) {
   const p = !analysis || !settings.enabled || analysis.rules !== settings.rules ? 0 : analysis.turnDown;

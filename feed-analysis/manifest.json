@@ -1,16 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Feed Analysis — a quieter feed",
-  "version": "0.3.0",
-  "description": "Write your own feed rules. Apply them with Jev to fade posts, reveal anything, and group your X feed by topic.",
+  "name": "jevzen",
+  "version": "0.4.2",
+  "description": "Write your own feed rules. Jev checks posts as you scroll. Matches switch to zen or cat photos without shifting your feed.",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://api.typesafe.ai/*", "https://openrouter.ai/*", "https://api.cloudflare.com/*"],
   "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_title": "Feed Analysis", "default_popup": "popup.html" },
+  "action": { "default_title": "jevzen", "default_popup": "popup.html" },
   "options_page": "settings.html",
   "content_scripts": [{
     "matches": ["https://x.com/*", "https://twitter.com/*", "https://www.x.com/*", "https://www.twitter.com/*"],
     "js": ["content.js"], "css": ["content.css"], "run_at": "document_idle"
   }],
+  "web_accessible_resources": [{ "resources": ["photos/*.png"], "matches": ["https://x.com/*", "https://twitter.com/*", "https://www.x.com/*", "https://www.twitter.com/*"] }],
   "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'; connect-src https://api.typesafe.ai https://openrouter.ai https://api.cloudflare.com" }
 }

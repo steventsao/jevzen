@@ -1,4 +1,4 @@
-# Feed Analysis
+# jevzen
 
 <!-- impeccable:product-schema 1 -->
 
@@ -16,7 +16,7 @@ The user wants to shape an X/Twitter feed with their own natural-language rules 
 
 ## Product Purpose
 
-Give the reader one editable rules text box. Apply commits the rules, reevaluates the feed through Jev, and proportionally fades posts the reader wants turned down. The user explicitly chose fading with automatic collapse only for very high scores.
+Give the reader one editable rules text box. Apply saves the rules and reevaluates visible posts through Jev. Matching posts crossfade to a chosen zen or cat photo while preserving their height; the reader can reveal any original. Optional fading remains available.
 
 ## Operating Context
 
@@ -24,11 +24,11 @@ Chrome desktop and public X/Twitter feed posts. The installed extension uses BYO
 
 ## Capabilities and Constraints
 
-One persistent, free-form rules document with an explicit Apply action; no model calls while typing; independent draft and applied states; one turn-down probability per post; adjustable fade strength and collapse threshold; reversible reveal; topic and story groups; live API calls; clear loading and error states. Rules support keep exceptions and ordinary language. Applying rules cancels outdated work and updates visible feed posts. Keys never enter the page or source bundles. Rules and visible post text go to the selected provider; no DMs, cookies, or author metadata. No account mute, block, like, or posting actions.
+One persistent, free-form rules document with an explicit Apply action; no model calls while typing; independent draft and applied states; one turn-down probability per post; adjustable fade strength and photo-switch threshold; reversible reveal; topic and story groups; live API calls; clear loading and error states. Rules support keep exceptions and ordinary language. Applying rules cancels outdated work and updates visible feed posts. Keys never enter the page or source bundles. Rules and visible post text go to the selected provider; no DMs, cookies, or author metadata. No account mute, block, like, or posting actions.
 
 ## Brand Commitments
 
-Working name: Feed Analysis. The user has not specified branding or a visual system.
+Product name: jevzen, as chosen by the user.
 
 ## Product Principles
 

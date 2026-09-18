@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdir, copyFile, readFile, writeFile, rm } from 'node:fs/promises';
+import { mkdir, copyFile, readFile, writeFile, rm, cp } from 'node:fs/promises';
 import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
 await mkdir(resolve(root, 'dist'), { recursive: true });
@@ -12,7 +12,9 @@ for (const file of ['popup.html', 'settings.html', 'ui.css', 'content.css'])
   await copyFile(resolve(root, 'public', file), resolve(root, 'dist', file));
 await build({ entryPoints: [resolve(root, 'src/ui.ts')], outdir: resolve(root, 'dev-dist'), bundle: true, target: 'chrome120', format: 'iife', minify: true });
 for (const file of ['lab.html', 'ui.css']) await copyFile(resolve(root, 'public', file), resolve(root, 'dev-dist', file));
+await cp(resolve(root, 'public/photos'), resolve(root, 'dist/photos'), { recursive: true });
 await copyFile(resolve(root, 'manifest.json'), resolve(root, 'dist', 'manifest.json'));
+await copyFile(resolve(root, '..', 'LICENSE'), resolve(root, 'dist', 'LICENSE'));
 const notices = await Promise.all(['effect', '@effect/platform-browser'].map(async name => {
   const folder = resolve(root, 'node_modules', name);
   const pkg = JSON.parse(await readFile(resolve(folder, 'package.json'), 'utf8'));

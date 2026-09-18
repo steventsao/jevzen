@@ -1,4 +1,4 @@
-# Feed Analysis control surfaces
+# jevzen control surfaces
 
 Mode: Operate. The extension controls a live feed; the lab proves the same scoring and attenuation on synthetic or pasted text.
 
@@ -14,6 +14,6 @@ STORY: Connect a personal key, edit one rules document, Apply to update the feed
 
 FIRST VIEWPORT: Desktop lab has a 302px control rail beside a readable feed column. The rules textarea and Apply lead the rail and remain above the fold in the 360px popup. A slim masthead names the product and connection state. Each post exposes one turn-down probability and its applied rules in Why. Moving the strength slider changes visibility without another API request; Apply reevaluates with the new rules.
 
-FORM: Grounded list: browser reading mode, audio mixer, reading-lens instrument, mail rules, contact sheet, research annotation, newspaper index. Candidate 3; seed 3e224588. Code-led implementation chosen for the functional extension task; no standing workflow preference recorded. Challengers declined for this narrow extension: consumer cards (kept action-only accent), catalog sleeve (kept restraint), drawcord (kept reversible controls), stage lighting (kept continuous attenuation), exposure record (kept explicit measurements), teletext (kept reveal affordance). The user confirmed proportional fading and high-score collapse.
+FORM: Grounded list: browser reading mode, audio mixer, reading-lens instrument, mail rules, contact sheet, research annotation, newspaper index. Candidate 3; seed 3e224588. Code-led implementation chosen for the functional extension task; no standing workflow preference recorded. Challengers declined for this narrow extension: consumer cards (kept action-only accent), catalog sleeve (kept restraint), drawcord (kept reversible controls), stage lighting (kept continuous attenuation), exposure record (kept explicit measurements), teletext (kept reveal affordance). The current X behavior preserves post height and crossfades matches to a chosen photo collection. Proportional fading remains optional; collapse is limited to the developer lab.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

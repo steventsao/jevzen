@@ -35,7 +35,7 @@ async function rpc(message: Record<string, unknown>): Promise<any> {
     response = extension ? await chrome.runtime.sendMessage(message) : await fetch('/api', {
       method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(message),
     }).then(r => r.json());
-  } catch { throw new Error('Cannot connect to Feed Analysis. Reload this page or restart the local preview.'); }
+  } catch { throw new Error('Cannot connect to jevzen. Reload this page or restart the local preview.'); }
   if (!response?.ok) throw new Error(response?.error?.message || 'The request could not finish. Please retry.');
   return response;
 }
@@ -48,7 +48,7 @@ function rulesNotice(message: string, error = false) {
 const mark = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8h20M6 16h15M6 24h9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
 const check = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 $('app').innerHTML = `
-  <header class="masthead"><div class="brand">${mark}<span>Feed Analysis</span></div><span id="connection" class="connection">Connecting…</span>${popup ? '' : '<a class="source-link" href="https://docs.typesafe.ai/primitives/noul" target="_blank" rel="noreferrer">Powered by Jev <span aria-hidden="true">↗</span></a>'}</header>
+  <header class="masthead"><div class="brand">${mark}<span>jevzen</span></div><span id="connection" class="connection">Connecting…</span>${popup ? '' : '<a class="source-link" href="https://docs.typesafe.ai/primitives/noul" target="_blank" rel="noreferrer">Powered by Jev <span aria-hidden="true">↗</span></a>'}</header>
   <div class="workspace">
     <aside class="controls" aria-label="Feed controls">
       <div class="control-title"><h1>${popup ? 'Your feed, less noise.' : 'Turn down the noise.'}</h1><p>Keep the signal. Set the volume.</p></div>

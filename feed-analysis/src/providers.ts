@@ -33,7 +33,7 @@ export class DecisionProvider extends Context.Service<DecisionProvider, {
 export function wireRequest(config: ProviderConfig, request: DecisionRequest) {
   switch (config.provider) {
     case 'typesafe': return { url: 'https://api.typesafe.ai/v1/systemone', body: { ...request, model: 'jev-latest' }, headers: {} };
-    case 'openrouter': return { url: 'https://openrouter.ai/api/alpha/decisions', body: { ...request, model: 'typesafe/jev-1.13' }, headers: { 'X-OpenRouter-Title': 'Feed Analysis' } };
+    case 'openrouter': return { url: 'https://openrouter.ai/api/alpha/decisions', body: { ...request, model: 'typesafe/jev-1.13' }, headers: { 'X-OpenRouter-Title': 'jevzen' } };
     case 'cloudflare': return { url: `https://api.cloudflare.com/client/v4/accounts/${config.accountId}/ai/run`, body: { model: 'typesafe/jev', input: request },
       headers: { 'cf-aig-collect-log': 'false', ...(config.gatewayId ? { 'cf-aig-gateway-id': config.gatewayId } : {}) } };
   }

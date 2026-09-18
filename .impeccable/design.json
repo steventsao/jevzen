@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-09-18T06:08:01.091Z",
-  "title": "Design System: Feed Analysis",
+  "title": "Design System: jevzen",
   "extensions": {
     "colorMeta": {
       "paper": {
@@ -353,7 +353,7 @@
       "kind": "input",
       "refersTo": "field",
       "description": "One free-form draft with explicit Apply, separate applied text, and nearby status feedback. This failure example retains the draft and previous applied rules; successful Apply uses muted feedback such as “Rules applied.”.",
-      "html": "<div class=\"ds-rules-editor\"><label for=\"ds-rules\">Your feed rules</label><p id=\"ds-rules-help\">Write what to turn down or keep. Change your mind whenever you like.</p><textarea id=\"ds-rules\" rows=\"7\" aria-describedby=\"ds-rules-help ds-rules-status\" required>Turn down product-launch hype.\nKeep technical evaluations.</textarea><div class=\"ds-rules-actions\"><span id=\"ds-rules-status\" role=\"status\">Unapplied changes</span><button class=\"ds-rules-apply\" type=\"button\">Apply</button></div><p class=\"ds-rules-feedback ds-rules-error\" role=\"status\">Cannot connect to Feed Analysis. Reload this page or restart the local preview.</p><details open><summary>View applied rules</summary><p>Turn down ragebait.\nKeep thoughtful criticism.</p></details></div>",
+      "html": "<div class=\"ds-rules-editor\"><label for=\"ds-rules\">Your feed rules</label><p id=\"ds-rules-help\">Write what to turn down or keep. Change your mind whenever you like.</p><textarea id=\"ds-rules\" rows=\"7\" aria-describedby=\"ds-rules-help ds-rules-status\" required>Turn down product-launch hype.\nKeep technical evaluations.</textarea><div class=\"ds-rules-actions\"><span id=\"ds-rules-status\" role=\"status\">Unapplied changes</span><button class=\"ds-rules-apply\" type=\"button\">Apply</button></div><p class=\"ds-rules-feedback ds-rules-error\" role=\"status\">Cannot connect to jevzen. Reload this page or restart the local preview.</p><details open><summary>View applied rules</summary><p>Turn down ragebait.\nKeep thoughtful criticism.</p></details></div>",
       "css": ".ds-rules-editor{color:var(--ink,#1d2a3c);font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-rules-editor>label{display:block;font-size:13px;font-weight:650}.ds-rules-editor>p{font-size:12px;color:var(--muted,#586679);line-height:1.55;margin:6px 0 0}.ds-rules-editor textarea{display:block;width:100%;min-height:155px;max-height:450px;resize:vertical;margin-top:12px;padding:11px 12px;border:1px solid #a9b5c7;border-radius:6px;background:var(--surface,#fff);color:var(--ink,#1d2a3c);font:400 13px/1.6 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;caret-color:var(--blue,#244fd5)}.ds-rules-editor textarea::placeholder{color:var(--muted,#586679)}.ds-rules-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}.ds-rules-actions>span{font-size:11px;color:var(--muted,#586679)}.ds-rules-apply{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;min-height:40px;border:0;border-radius:7px;background:var(--blue,#244fd5);color:var(--surface,#fff);font:600 13px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer}.ds-rules-apply:hover:not(:disabled){background:#1b3fac}.ds-rules-apply:disabled{cursor:default;opacity:.5}.ds-rules-apply:focus-visible,.ds-rules-editor summary:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}.ds-rules-editor textarea:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:3px}.ds-rules-editor>.ds-rules-feedback{margin-top:10px}.ds-rules-editor>.ds-rules-feedback.ds-rules-error{color:var(--error,#9a3327)}.ds-rules-editor details{margin-top:12px;font-size:12px}.ds-rules-editor summary{font-weight:600;cursor:pointer}.ds-rules-editor details p{margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted,#586679)}"
     },
     {
@@ -407,12 +407,12 @@
   ],
   "narrative": {
     "northStar": "The Reading Lens",
-    "overview": "Feed Analysis makes a feed quieter while keeping the reader in control. Its implemented visual language pairs cool paper, deep blue-black ink, cobalt actions, and fine separators with compact system typography. The post remains the primary reading material; measurements and reversible actions sit alongside it.\n\nThe interface has the precision of a small instrument panel: understated controls, directly labelled percentages, and restrained tonal changes. This document captures the working implementation, rather than claiming an independently established brand identity. The **Operate** mode and the control-rail composition belong to the [surface brief](.impeccable/feed-analysis-surface.md); they are not a global mode or a requirement for every future Feed Analysis surface.\n\nThe installed extension presents rules, connection and display controls, and groups from an open X feed in its popup and settings. Reading and story focus happen on X itself. The separate developer lab retains the synthetic feed, composer, and reading-row examples described here; those examples and lab navigation do not appear in the shipping extension views.",
+    "overview": "jevzen makes a feed quieter while keeping the reader in control. Its implemented visual language pairs cool paper, deep blue-black ink, cobalt actions, and fine separators with compact system typography. The post remains the primary reading material; measurements and reversible actions sit alongside it.\n\nThe interface has the precision of a small instrument panel: understated controls, directly labelled percentages, and restrained tonal changes. This document captures the working implementation, rather than claiming an independently established brand identity. The **Operate** mode and the control-rail composition belong to the [surface brief](.impeccable/feed-analysis-surface.md); they are not a global mode or a requirement for every future jevzen surface.\n\nThe installed extension presents rules, connection and display controls, and groups from an open X feed in its popup and settings. Reading and story focus happen on X itself. The separate developer lab retains the synthetic feed, composer, and reading-row examples described here; those examples and lab navigation do not appear in the shipping extension views.",
     "keyCharacteristics": [
       "Cool neutral surfaces with cobalt action and selection states.",
       "Readable posts with compact, visibly separate measurement controls.",
       "Flat surfaces divided by fine borders and spacing.",
-      "Proportional fading, reversible reveal, and explicit high-score collapse.",
+      "Height-preserving photo replacement on X, reversible reveal, and optional proportional fading; collapse remains only in the developer lab.",
       "A geometric SVG mark made from three shortening horizontal strokes."
     ],
     "rules": [
@@ -447,7 +447,7 @@
       "Don't hide unscored or failed posts as though they had received a high score.",
       "Don't introduce decorative shadows or arbitrary accent colors into the existing control surfaces.",
       "Don't promote the surface's Operate mode or its desktop rail into a permanent global product identity.",
-      "Don't describe this implementation as shipping raster imagery, a custom font, or a discovered topic ontology."
+      "Don't describe the bundled generated photos as externally fetched imagery, or claim a custom font or discovered topic ontology."
     ]
   }
 }

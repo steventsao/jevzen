@@ -1,5 +1,5 @@
 ---
-name: Feed Analysis
+name: jevzen
 description: A reading lens with visible, adjustable attenuation.
 colors:
   paper: "#f5f7fa"
@@ -145,15 +145,15 @@ components:
     backgroundColor: "{colors.blue-light}"
 ---
 
-# Design System: Feed Analysis
+# Design System: jevzen
 
 ## Overview
 
 **Creative North Star: "The Reading Lens"**
 
-Feed Analysis makes a feed quieter while keeping the reader in control. Its implemented visual language pairs cool paper, deep blue-black ink, cobalt actions, and fine separators with compact system typography. The post remains the primary reading material; measurements and reversible actions sit alongside it.
+jevzen makes a feed quieter while keeping the reader in control. Its implemented visual language pairs cool paper, deep blue-black ink, cobalt actions, and fine separators with compact system typography. The post remains the primary reading material; measurements and reversible actions sit alongside it.
 
-The interface has the precision of a small instrument panel: understated controls, directly labelled percentages, and restrained tonal changes. This document captures the working implementation, rather than claiming an independently established brand identity. The **Operate** mode and the control-rail composition belong to the [surface brief](.impeccable/feed-analysis-surface.md); they are not a global mode or a requirement for every future Feed Analysis surface.
+The interface has the precision of a small instrument panel: understated controls, directly labelled percentages, and restrained tonal changes. This document captures the working implementation, rather than claiming an independently established brand identity. The **Operate** mode and the control-rail composition belong to the [surface brief](.impeccable/feed-analysis-surface.md); they are not a global mode or a requirement for every future jevzen surface.
 
 The installed extension presents rules, connection and display controls, and groups from an open X feed in its popup and settings. Reading and story focus happen on X itself. The separate developer lab retains the synthetic feed, composer, and reading-row examples described here; those examples and lab navigation do not appear in the shipping extension views.
 
@@ -162,7 +162,7 @@ The installed extension presents rules, connection and display controls, and gro
 - Cool neutral surfaces with cobalt action and selection states.
 - Readable posts with compact, visibly separate measurement controls.
 - Flat surfaces divided by fine borders and spacing.
-- Proportional fading, reversible reveal, and explicit high-score collapse.
+- Height-preserving photo replacement on X, reversible reveal, and optional proportional fading; collapse remains only in the developer lab.
 - A geometric SVG mark made from three shortening horizontal strokes.
 
 ## Colors
@@ -226,7 +226,7 @@ The implemented system uses no box shadows. Depth comes from white reading surfa
 
 The form language uses mildly rounded action and field corners, with a larger radius around the shared feed container. Use the extracted `field`, `action`, `composer`, and `feed` radii for their corresponding roles. Circular avatar initials and switch thumbs are the exceptions. Probability tracks have square ends; range tracks have only the tiny implemented radius (1px).
 
-The app mark is inline SVG: three rounded horizontal strokes progressively shorten from top to bottom. Its normal masthead box is larger (31px) than ordinary icons (20px), and it reduces in the popup (26px). The mark is decorative beside the written product name and is hidden from assistive technology. No shipping raster assets are present; screenshots in `feed-analysis/artifacts/` are verification artifacts, not product imagery.
+The app mark is inline SVG: three rounded horizontal strokes progressively shorten from top to bottom. Its normal masthead box is larger (31px) than ordinary icons (20px), and it reduces in the popup (26px). The mark is decorative beside the written product name and is hidden from assistive technology. Four generated photos ship in `feed-analysis/public/photos/`: two zen scenes and two cats. Their generation prompts and MIT licensing are recorded alongside the files. Screenshots in `feed-analysis/artifacts/` are verification artifacts.
 
 ## Components
 
@@ -254,7 +254,7 @@ Topic filters are quiet text-and-count rows. Their selected state uses selection
 
 In the developer lab, each post sits inside the shared feed container. Author initials, author name, and context precede the text. The analysis strip presents one **Turn down** percentage and a fine slate track, a topic label, a reveal action, and a **Why?** disclosure. The disclosure explains the probability against the applied rules and shows the exact rules used for that result, with line breaks and long text preserved; an unapplied draft must not replace that evidence. The analysis controls stay fully readable when the post body fades. The installed extension adds its analysis controls to posts on X; popup and settings do not render a sample feed.
 
-Attenuation changes both opacity and saturation proportionally. In the lab, the transition is 200ms with `ease-out`; in the X feed it is 180ms. Hover and keyboard focus within a noncollapsed post restore its body to full visibility. A collapsed row keeps the measurements and **Show anyway** action visible, and revealing it changes the action to **Apply filter**. Unscored and failed posts remain readable. Reduced-motion preference removes these transitions.
+On X, matching posts crossfade to a local zen or cat photo over 320ms while keeping the original post in document flow. **Show original** restores the post; **Next photo** cycles the selected collection. Optional fading changes opacity and saturation, with hover and keyboard focus restoring visibility. The developer lab retains its 200ms attenuation and collapsed rows with **Show anyway**. Unscored and failed posts remain readable. Reduced-motion preference removes transitions.
 
 ### Story Groups and Status
 
@@ -279,4 +279,4 @@ Story choices use lightly tinted buttons, with a cobalt border and selection tin
 - Don't hide unscored or failed posts as though they had received a high score.
 - Don't introduce decorative shadows or arbitrary accent colors into the existing control surfaces.
 - Don't promote the surface's Operate mode or its desktop rail into a permanent global product identity.
-- Don't describe this implementation as shipping raster imagery, a custom font, or a discovered topic ontology.
+- Don't describe the bundled generated photos as externally fetched imagery, or claim a custom font or discovered topic ontology.

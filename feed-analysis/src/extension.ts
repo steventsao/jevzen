@@ -34,7 +34,7 @@ async function rpc(message: Record<string, unknown>): Promise<any> {
     response = extension ? await chrome.runtime.sendMessage(message) : await fetch('/api', {
       method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(message),
     }).then(r => r.json());
-  } catch { throw new Error('Cannot connect to Feed Analysis. Reload the extension and refresh your X tab.'); }
+  } catch { throw new Error('Cannot connect to jevzen. Reload the extension and refresh your X tab.'); }
   if (!response?.ok) throw new Error(response?.error?.message || 'The request could not finish. Please retry.');
   return response;
 }
@@ -47,19 +47,19 @@ function rulesNotice(message: string, error = false) {
 const mark = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8h20M6 16h15M6 24h9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
 const check = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10 3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 $('app').innerHTML = `
-  <header class="masthead"><div class="brand">${mark}<span>Feed Analysis</span></div><span id="connection" class="connection">Connecting…</span>${popup ? '' : '<a class="source-link" href="https://docs.typesafe.ai/primitives/noul" target="_blank" rel="noreferrer">Powered by Jev <span aria-hidden="true">↗</span></a>'}</header>
+  <header class="masthead"><div class="brand">${mark}<span>jevzen</span></div><span id="connection" class="connection">Connecting…</span>${popup ? '' : '<a class="source-link" href="https://docs.typesafe.ai/primitives/noul" target="_blank" rel="noreferrer">Powered by Jev <span aria-hidden="true">↗</span></a>'}</header>
   <div class="workspace">
     <aside class="controls" aria-label="Feed controls">
       <div class="control-title"><h1>${popup ? 'Your feed, less noise.' : 'Turn down the noise.'}</h1><p>Keep the signal. Set the volume.</p></div>
       <form id="rules-form" class="rules-editor"><label for="rules">Your feed rules</label><p id="rules-help">Write what to turn down or keep. Change your mind whenever you like.</p><textarea id="rules" rows="7" maxlength="${MAX_RULES_LENGTH}" aria-describedby="rules-help rules-status" placeholder="Turn down ragebait. Keep thoughtful criticism." required></textarea><div class="rules-actions"><span id="rules-status" role="status">Applied</span><button id="apply-rules" class="button primary" type="submit">Apply</button></div><p id="rules-feedback" class="rules-feedback" role="status" hidden></p><details id="applied-rules"><summary>View applied rules</summary><p id="applied-rules-text"></p></details></form>
-      <label class="switch-row main-switch"><span><strong>Filter the feed</strong><small id="enabled-copy">Your applied rules shape the feed.</small></span><input id="enabled" type="checkbox" role="switch" aria-label="Filter the feed"></label>
-      <section class="control-section"><label class="range-label" for="strength"><strong>Fade strength</strong><output id="strength-value" for="strength"></output></label><input id="strength" type="range" min="0" max="90" step="1"><div class="range-ends"><span>Keep visible</span><span>Fade more</span></div><p class="control-help">The higher Jev’s probability, the more the post fades. Hover to read it.</p></section>
-      <section class="control-section"><label class="switch-row"><strong>Collapse very high scores</strong><input id="collapse" type="checkbox" role="switch"></label><label class="range-label compact" for="threshold"><span>Collapse at</span><output id="threshold-value" for="threshold"></output></label><input id="threshold" type="range" min="75" max="100" step="1"><p class="control-help">Nothing is deleted. “Show anyway” always brings a post back.</p></section>
+      <label class="switch-row main-switch"><span><strong>Filter the feed</strong><small id="enabled-copy">Scroll to check posts against your rules.</small></span><input id="enabled" type="checkbox" role="switch" aria-label="Filter the feed"></label>
+      <section class="control-section"><label for="photo-theme"><strong>Replace with</strong></label><select id="photo-theme"><option value="zen">Zen scenes</option><option value="cats">Cat photos</option></select><p class="control-help">Photos are included in the extension. No image tracking or downloads while you scroll.</p></section><section class="control-section"><label class="range-label" for="strength"><strong>Fade strength</strong><output id="strength-value" for="strength"></output></label><input id="strength" type="range" min="0" max="90" step="1"><div class="range-ends"><span>Keep visible</span><span>Fade more</span></div><p class="control-help">Used when photo replacement is off. Hover over a faded post to read it.</p></section>
+      <section class="control-section"><label class="switch-row"><strong>Switch matching posts</strong><input id="collapse" type="checkbox" role="switch"></label><label class="range-label compact" for="threshold"><span>Switch at</span><output id="threshold-value" for="threshold"></output></label><input id="threshold" type="range" min="75" max="100" step="1"><p class="control-help">Matches crossfade to a photo, keeping their original height. Show original switches back.</p></section>
       <section class="control-section topic-section"><div class="section-heading"><h2>Topic groups</h2><span id="topic-count" class="count"></span></div><div id="topics" class="topics"></div></section>
       <details id="story-section"><summary>Story groups</summary><p class="control-help">Group up to 24 posts from your open X feed, then focus a story there.</p><button id="group-stories" class="button secondary" disabled>Group loaded posts</button><button id="clear-group" class="text-button" hidden>Clear story filter</button><div id="story-list" class="story-groups"></div></details><details id="settings"><summary>Connection & privacy</summary><div class="settings-body"><p id="key-status"></p><form id="key-form"><label for="provider">Jev provider</label><select id="provider"><option value="typesafe">TypeSafe · direct Jev</option><option value="openrouter">OpenRouter · Jev</option><option value="cloudflare">Cloudflare · Jev</option></select><div id="cloudflare-fields" hidden><label for="account-id">Cloudflare account ID</label><input id="account-id" autocomplete="off" maxlength="32" placeholder="32-character account ID"><label for="gateway-id">Gateway ID (optional)</label><input id="gateway-id" autocomplete="off" maxlength="64" placeholder="Your default gateway"></div><label for="api-key">Provider API key</label><input type="password" id="api-key" autocomplete="off" spellcheck="false" placeholder="Paste your API key"><small id="provider-help"></small><button class="button primary" type="submit">Save connection</button></form><button class="text-button" id="forget-key">Forget this provider’s key</button><p class="privacy">Applying rules or analyzing posts sends your rules and visible post text to the selected provider and Jev. No DMs, cookies or author details. Keys stay in this browser’s extension storage and are never shared with X. Gateway logging follows your provider settings.</p><button id="clear-cache" class="text-button">Clear cached scores</button></div></details>
       <div class="extension-links"><button class="button secondary" id="open-x">Open X</button><button class="text-button" id="open-settings">Settings</button></div>
     </aside>
-<main class="popup-status"><p id="feed-state">Reading your X feed…</p><button id="refresh-feed" class="text-button">Refresh feed counts</button></main>
+<main class="popup-status"><p id="feed-state">Reading your X feed…</p><button id="show-switched" class="text-button" hidden>Show original posts</button><button id="refresh-feed" class="text-button">Refresh feed counts</button></main>
   </div><div id="notice" class="notice" role="status" hidden></div>`;
 
 function syncRules() {
@@ -76,12 +76,13 @@ function resetAnalysis() {
   renderStories();
 }
 function syncSettings() {
+  $<HTMLSelectElement>('photo-theme').value = settings.photoTheme;
   for (const key of ['enabled', 'collapse'] as const) $<HTMLInputElement>(key).checked = settings[key];
   $<HTMLInputElement>('strength').value = String(Math.round(settings.strength * 100));
   $<HTMLInputElement>('threshold').value = String(Math.round(settings.threshold * 100));
   $('strength-value').textContent = pct(settings.strength); $('threshold-value').textContent = pct(settings.threshold);
   $<HTMLInputElement>('threshold').disabled = !settings.collapse;
-  $('enabled-copy').textContent = settings.enabled ? 'Your applied rules shape the feed.' : 'Paused. All posts remain fully visible.';
+  $('enabled-copy').textContent = settings.enabled ? 'Scroll to check posts against your rules.' : 'Paused. All posts remain fully visible.';
   $('connection').textContent = configured ? (settings.enabled ? 'Connected' : 'Paused') : 'Add API key';
   $('connection').classList.toggle('connected', configured && settings.enabled);
   $('key-status').textContent = local ? 'Connected locally using your workspace .env.' : configured ? `Connected to ${provider.provider === 'typesafe' ? 'TypeSafe' : provider.provider === 'openrouter' ? 'OpenRouter' : 'Cloudflare'}.` : 'Bring your own key to analyze your feed.';
@@ -98,6 +99,7 @@ function updateSettings(patch: Partial<Settings>) {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => { void rpc({ type: 'saveSettings', settings }).catch(e => notice(e.message, true)); }, 160);
 }
+$('photo-theme').addEventListener('change', () => updateSettings({ photoTheme: $<HTMLSelectElement>('photo-theme').value === 'cats' ? 'cats' : 'zen' }));
 for (const key of ['enabled', 'collapse'] as const)
   $<HTMLInputElement>(key).addEventListener('change', e => updateSettings({ [key]: (e.target as HTMLInputElement).checked }));
 for (const key of ['strength', 'threshold'] as const)
@@ -140,7 +142,7 @@ function providerHelp() {
 }
 $('provider').addEventListener('change', () => { $<HTMLInputElement>('api-key').value = ''; providerHelp(); });
 $('forget-key').onclick = async () => { try { await rpc({ type: 'forgetKey' }); configured = false; syncSettings(); notice('Key removed from this browser.'); } catch (e) { notice((e as Error).message, true); } };
-$('clear-cache').onclick = async () => { try { await rpc({ type: 'clearCache' }); notice('Cached scores cleared. Existing labels stay until the page is reloaded.'); } catch (e) { notice((e as Error).message, true); } };
+$('clear-cache').onclick = async () => { try { await rpc({ type: 'clearCache' }); notice('Cached scores cleared. Existing decisions stay until you apply rules again or reload the page.'); } catch (e) { notice((e as Error).message, true); } };
 
 function topicFor(post: Post) { return post.analysis && post.analysis.topicConfidence >= 0.5 ? post.analysis.topic : 'uncertain'; }
 function renderTopics() {
@@ -182,10 +184,11 @@ async function refreshFeed() {
     activeTab = tabId;
     posts = snapshot.posts || [];
     selected = snapshot.focusTopic || 'all'; renderTopics(); renderStories();
+    $('show-switched').hidden = !snapshot.switched;
     $('clear-group').hidden = !snapshot.focusPostIds;
-    $('feed-state').textContent = posts.length ? `${posts.filter(p => p.analysis).length} of ${posts.length} loaded posts analyzed. Scroll your feed to read more.` : 'No text posts found yet. Scroll your X feed to begin.';
+    $('feed-state').textContent = posts.length ? `${posts.filter(p => p.analysis).length} of ${posts.length} loaded posts checked · ${snapshot.switched || 0} switched. Scroll to check more.` : 'No text posts found yet. Scroll your X feed to begin.';
     return true;
-  } catch { if (refresh !== feedRefresh) return activeTab !== undefined; posts = []; activeTab = undefined; selected = 'all'; stories = []; renderTopics(); renderStories(); $('clear-group').hidden = true; $('feed-state').textContent = 'Open X or Twitter, then scroll your feed. If the extension was just installed, refresh that tab.'; return false; }
+  } catch { if (refresh !== feedRefresh) return activeTab !== undefined; $('show-switched').hidden = true; posts = []; activeTab = undefined; selected = 'all'; stories = []; renderTopics(); renderStories(); $('clear-group').hidden = true; $('feed-state').textContent = 'Open X or Twitter, then scroll your feed. If the extension was just installed, refresh that tab.'; return false; }
 }
 function renderStories() {
   const list = $('story-list'); const restore = preserveFocus(list); list.replaceChildren();
@@ -247,4 +250,9 @@ $('group-stories').onclick = async () => {
 $('clear-group').onclick = async () => {
   if (activeTab) await chrome.tabs.sendMessage(activeTab, { type: 'focusPosts', ids: null }).catch(() => {});
   selectedStory = null; $('clear-group').hidden = true; renderStories();
+};
+
+$('show-switched').onclick = async () => {
+  if (activeTab) await chrome.tabs.sendMessage(activeTab, { type: 'showAll' }).catch(() => {});
+  void refreshFeed();
 };

@@ -37,31 +37,33 @@ export async function checkExtension(context: BrowserContext, worker: Worker, id
       body.append(p); article.append(body); document.getElementById('feed')!.append(article);
     }
   }, SAMPLES);
-  await feed.waitForFunction(() => [...document.querySelectorAll('feed-analysis-controls')].filter(e => e.shadowRoot?.textContent?.includes('Turn down')).length === 6);
-  assert.equal(await feed.locator('article[data-fa-collapsed=true]').count(), 2);
+  await feed.waitForFunction(() => document.querySelectorAll('article[data-fa-status=scored]').length === 6);
+  await feed.waitForFunction(() => document.querySelectorAll('[data-fa-replaced=true]').length === 2);
   await popup.locator('#refresh-feed').click();
   await popup.waitForFunction(() => document.getElementById('feed-state')?.textContent?.startsWith('6 of 6'));
-  checks.push('Packaged content script analyzes the X-shaped feed and popup reads its actual counts');
-  await feed.locator('#sample-2').getByRole('button', { name: 'Show anyway' }).click();
+  checks.push('Packaged content script checks and switches the X-shaped feed and popup reads its actual counts');
+  await feed.getByRole('button', { name: 'Show all', exact: true }).click();
   assert.equal(await feed.locator('#sample-2 > div').isVisible(), true);
-  await feed.locator('#sample-2').getByRole('button', { name: 'Apply filter' }).click();
-  checks.push('Reveal and collapse operate directly on posts in the X tab');
+  assert.equal(await feed.locator('#sample-3 > div').isVisible(), true);
+  await popup.locator('#apply-rules').click();
+  await feed.waitForFunction(() => document.querySelectorAll('[data-fa-replaced=true]').length === 2);
+  checks.push('Show all restores switched posts; Apply resets those overrides');
   const apply = async (page: Page, rules: string) => {
     await page.locator('#rules').fill(rules); await page.locator('#apply-rules').click();
     await page.waitForFunction(() => document.getElementById('rules-status')?.textContent === 'Applied');
   };
   const waitScore = async (post: string, percent: number) => {
-    await feed.waitForFunction(({ post, percent }) => document.querySelector(`#${post} feed-analysis-controls`)?.shadowRoot?.textContent?.includes(`Turn down ${percent}%`), { post, percent });
+    await feed.waitForFunction(({ post, percent }) => Math.round(Number(document.querySelector(`#${post}`)?.getAttribute('data-fa-score')) * 100) === percent, { post, percent });
   };
   const runningRules = 'Turn down running updates. Keep everything else, including ragebait and hype.';
   const calls = await worker.evaluate(() => (globalThis as any).calls);
   await popup.locator('#rules').fill(runningRules);
   assert.equal(await popup.locator('#rules-status').innerText(), 'Unapplied changes');
   assert.equal(await worker.evaluate(() => (globalThis as any).calls), calls);
-  assert.equal(await feed.locator('article[data-fa-collapsed=true]').count(), 2);
+  await feed.waitForFunction(() => document.querySelectorAll('[data-fa-replaced=true]').length === 2);
   await apply(popup, runningRules); await waitScore('sample-5', 99); await waitScore('sample-2', 2);
-  assert.equal(await feed.locator('article[data-fa-collapsed=true]').count(), 1);
-  assert.equal(await feed.locator('article[data-fa-collapsed=true]').getAttribute('id'), 'sample-5');
+  await feed.waitForFunction(() => document.querySelectorAll('[data-fa-replaced=true]').length === 1);
+  assert.equal(await feed.locator('[data-fa-replaced=true]').getAttribute('id'), 'sample-5');
   assert.equal((await worker.evaluate(() => chrome.storage.local.get('settings'))).settings.rules, runningRules);
   checks.push('Drafts make no calls; Apply persists free-form rules and changes the actual feed');
   await apply(popup, DEFAULT_RULES); await waitScore('sample-2', 98);
@@ -76,24 +78,24 @@ export async function checkExtension(context: BrowserContext, worker: Worker, id
   await feed.waitForFunction(() => Number(document.querySelector<HTMLElement>('#sample-1')?.style.getPropertyValue('--fa-opacity')) > .98);
   assert.equal(await worker.evaluate(() => (globalThis as any).calls), beforeStrength);
   await popup.locator('#strength').fill('75'); await popup.locator('#strength').dispatchEvent('input');
-  await popup.locator('#enabled').uncheck(); await feed.waitForFunction(() => document.querySelectorAll('article[data-fa-collapsed=true]').length === 0);
-  await popup.locator('#enabled').check(); await feed.waitForFunction(() => document.querySelectorAll('article[data-fa-collapsed=true]').length === 2);
+  await popup.locator('#enabled').uncheck(); await feed.waitForFunction(() => document.querySelectorAll('[data-fa-replaced=true]').length === 0);
+  await popup.locator('#enabled').check(); await feed.waitForFunction(() => document.querySelectorAll('[data-fa-replaced=true]').length === 2);
   checks.push('Fade strength reuses scores; pause restores the X feed');
 
   await popup.locator('#refresh-feed').click();
   await popup.locator('#story-section summary').click(); await popup.locator('#group-stories').click();
   await popup.waitForFunction(() => document.querySelectorAll('#story-list button').length === 5);
   await popup.locator('#story-list button').first().click();
-  await feed.waitForFunction(() => document.querySelector('#sample-5')?.getAttribute('data-fa-collapsed') === 'true');
-  assert.equal(await feed.locator('#sample-4').getAttribute('data-fa-collapsed'), 'false');
+  await feed.waitForFunction(() => document.querySelector('#sample-5')?.getAttribute('data-fa-replaced') === 'true');
+  assert.equal(await feed.locator('#sample-4').getAttribute('data-fa-replaced'), null);
   await feed.evaluate(() => {
     const article = document.createElement('article'); article.dataset.testid = 'tweet'; article.id = 'unscored-post'; article.style.marginTop = '2000px';
     const body = document.createElement('div'); const p = document.createElement('p'); p.dataset.testid = 'tweetText'; p.textContent = 'A newly loaded post that has not been analyzed.';
     body.append(p); article.append(body); document.getElementById('feed')!.append(article);
   });
-  await feed.waitForFunction(() => document.querySelector('#unscored-post')?.getAttribute('data-fa-collapsed') === 'false');
+  await feed.waitForFunction(() => document.querySelector('#unscored-post')?.getAttribute('data-fa-status') === 'waiting');
   assert.equal(await feed.locator('#unscored-post > div').isVisible(), true);
-  assert.equal(await feed.locator('#unscored-post feed-analysis-controls').evaluate(e => e.shadowRoot?.textContent?.includes('Waiting')), true);
+  assert.equal(await feed.locator('#unscored-post').getAttribute('data-fa-status'), 'waiting');
   await feed.evaluate(() => document.getElementById('unscored-post')!.remove());
   await worker.evaluate(() => { (globalThis as any).mode = 'unauthorized'; });
   await feed.evaluate(() => {
@@ -101,20 +103,20 @@ export async function checkExtension(context: BrowserContext, worker: Worker, id
     const body = document.createElement('div'); const p = document.createElement('p'); p.dataset.testid = 'tweetText'; p.textContent = 'A post with an unavailable score must remain readable.';
     body.append(p); article.append(body); document.getElementById('feed')!.prepend(article);
   });
-  await feed.waitForFunction(() => document.querySelector('#failed-post feed-analysis-controls')?.shadowRoot?.textContent?.includes('rejected'));
+  await feed.waitForFunction(() => document.querySelector('#failed-post')?.getAttribute('data-fa-status') === 'error');
   assert.equal(await feed.locator('#failed-post > div').isVisible(), true);
-  assert.equal(await feed.locator('#failed-post').getAttribute('data-fa-collapsed'), 'false');
+  assert.equal(await feed.locator('#failed-post').getAttribute('data-fa-replaced'), null);
   await feed.screenshot({ path: resolve(root, 'artifacts/extension-story-error.png'), fullPage: true, animations: 'disabled' });
   await popup.locator('#clear-group').click();
-  await feed.waitForFunction(() => document.querySelector('#sample-5')?.getAttribute('data-fa-collapsed') === 'false');
+  await feed.waitForFunction(() => document.querySelector('#sample-5')?.getAttribute('data-fa-replaced') !== 'true' && !document.querySelector('[data-fa-replaced=switching]'));
   assert.equal(await feed.locator('#failed-post > div').isVisible(), true);
   await feed.evaluate(() => document.getElementById('failed-post')!.remove());
   await worker.evaluate(() => { (globalThis as any).mode = 'fixture'; });
   checks.push('Selecting and clearing story focus keeps waiting and failed posts readable');
   await popup.locator('#topics button').filter({ hasText: 'Everyday life' }).click();
-  await feed.waitForFunction(() => document.querySelector('#sample-1')?.getAttribute('data-fa-collapsed') === 'true');
+  await feed.waitForFunction(() => document.querySelector('#sample-1')?.getAttribute('data-fa-replaced') === 'true');
   await popup.locator('#topics button').filter({ hasText: 'All posts' }).click();
-  await feed.waitForFunction(() => document.querySelector('#sample-1')?.getAttribute('data-fa-collapsed') === 'false');
+  await feed.waitForFunction(() => document.querySelector('#sample-1')?.getAttribute('data-fa-replaced') !== 'true' && !document.querySelector('[data-fa-replaced=switching]'));
   await popup.locator('#story-section summary').click();
   checks.push('Topic and story groups focus real loaded posts in X, with clear-filter recovery');
 
@@ -155,7 +157,7 @@ export async function checkExtension(context: BrowserContext, worker: Worker, id
   assert.equal(await popup.evaluate(() => document.documentElement.scrollWidth), 360);
   const started = await worker.evaluate(() => (globalThis as any).calls);
   await feed.evaluate(() => history.pushState({}, '', '/messages/123'));
-  await feed.waitForFunction(() => document.querySelectorAll('feed-analysis-controls').length === 0);
+  await feed.waitForFunction(() => document.querySelectorAll('article[data-fa]').length === 0);
   assert.equal(await worker.evaluate(() => (globalThis as any).calls), started);
   checks.push('Messages navigation removes overlays and sends no text');
   assert.equal(localRequests, 0);

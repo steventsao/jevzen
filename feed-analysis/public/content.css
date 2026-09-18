@@ -1,10 +1,12 @@
-article[data-fa="on"] > :not(feed-analysis-controls) {
+article[data-fa="on"] {
   opacity: var(--fa-opacity, 1);
   filter: saturate(var(--fa-saturation, 1));
   transition: opacity 180ms ease-out, filter 180ms ease-out;
 }
-article[data-fa="on"]:hover > :not(feed-analysis-controls),
-article[data-fa="on"]:focus-within > :not(feed-analysis-controls) { opacity: 1; filter: none; }
-article[data-fa="on"][data-fa-collapsed="true"] > :not(feed-analysis-controls) { display: none !important; }
-feed-analysis-controls[hidden] { display: none !important; }
-@media (prefers-reduced-motion: reduce) { article[data-fa="on"] > :not(feed-analysis-controls) { transition: none; } }
+article[data-fa="on"]:hover,
+article[data-fa="on"]:focus-within { opacity: 1; filter: none; }
+article[data-fa-replaced] { position: relative !important; isolation: isolate; }
+article[data-fa-replaced="true"] > :not(feed-analysis-card) { visibility: hidden !important; }
+article[data-fa-replaced] > :not(feed-analysis-card) { pointer-events: none !important; }
+feed-analysis-notice[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { article[data-fa="on"] { transition: none; } }

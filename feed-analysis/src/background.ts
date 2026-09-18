@@ -99,7 +99,7 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
   if (sender.id !== chrome.runtime.id) return false;
   const trusted = Boolean(sender.url?.startsWith(extensionUrl));
   const fromFeed = !trusted && Boolean(sender.url && isFeedUrl(sender.url)) && sender.frameId === 0;
-  if (!trusted && !fromFeed) { respond({ ok: false, error: { code: 'SENDER', message: 'This page cannot use Feed Analysis.' } }); return false; }
+  if (!trusted && !fromFeed) { respond({ ok: false, error: { code: 'SENDER', message: 'This page cannot use jevzen.' } }); return false; }
   (async () => {
     if (message.type === 'state') return state();
     if (message.type === 'analyze') return { analysis: await analyze(cleanText(message.text), fromFeed, message.rules) };

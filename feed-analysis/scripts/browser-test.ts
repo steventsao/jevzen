@@ -1,3 +1,5 @@
+import { checkReplacements } from './replacement-checks';
+import { checkFlicker } from './flicker-checks';
 import { checkExtension } from './extension-checks';
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
@@ -47,8 +49,13 @@ try {
           else init?.signal?.addEventListener('abort', () => { w.analysisAborted = true; reject(new DOMException('Cancelled', 'AbortError')); }, { once: true });
         });
       }
+      (w.analyzedTexts ||= []).push(payload.state.post);
+      if (payload.state.post === w.waitPost) {
+        w.postStarted?.();
+        await new Promise<void>(resolve => { w.releasePost = resolve; });
+      }
       const index = samples.findIndex(p => p.text === payload.state.post);
-      const rage = index === 1 ? .98 : index === 2 ? .43 : String(payload.state.post).startsWith('Moderate fixture:') ? .72 : .03;
+      const rage = index === 1 ? .98 : index === 2 ? .43 : String(payload.state.post).startsWith('Switch fixture:') ? .99 : String(payload.state.post).startsWith('Moderate fixture:') ? .72 : .03;
       const hype = index === 2 ? .99 : .03;
       const topic = index === 4 ? 'life' : index === 5 ? 'politics' : 'technology';
       const turnDown = payload.state.readerRules.startsWith('Turn down running updates.') ? (index === 4 ? .99 : .02) : Math.max(rage, hype);
@@ -57,6 +64,8 @@ try {
     };
   }, { samples: SAMPLES, topics: Object.keys(TOPICS) });
   const lab = await checkExtension(context, worker, id, root, checks);
+  await checkReplacements(context, worker, lab, root, checks);
+  await checkFlicker(context, worker, lab, checks);
   if (process.env.TYPESAFE_API_KEY) {
     await worker.evaluate(key => { (globalThis as any).mode = 'live'; return chrome.storage.local.set({ credentials: { typesafe: key }, provider: { provider: 'typesafe', accountId: '', gatewayId: '' } }); }, process.env.TYPESAFE_API_KEY);
     const result = await lab.evaluate(async () => chrome.runtime.sendMessage({ type: 'analyze', text: 'Live extension check: a measured software update with documented limitations.' }));
