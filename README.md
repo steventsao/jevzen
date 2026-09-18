@@ -5,6 +5,31 @@ A runnable support-ticket assessment built with the existing
 It asks category, urgency, and frustration questions together in one TypeSafe
 request, validates the response, then applies an application-owned category policy.
 
+## Feed Analysis Chrome extension
+
+[Feed Analysis](feed-analysis/README.md) is a Chrome Manifest V3 extension built
+with Effect and `@effect/platform-browser`. Write one natural-language rules
+document, click Apply, and let Jev fade or collapse matching X/Twitter posts.
+Topic and story controls focus posts in the open X tab. The popup and settings
+contain controls only; the synthetic developer feed is excluded from the extension.
+
+Build from this repository:
+
+```sh
+cd feed-analysis
+pnpm install --frozen-lockfile
+pnpm build
+```
+
+In `chrome://extensions`, enable Developer mode and **Load unpacked** from
+`feed-analysis/dist`. Add a TypeSafe, OpenRouter, or Cloudflare key in the
+extension's connection settings, then refresh X. The installed extension needs
+no local server, Node.js process, or `.env` file. See the extension README for
+provider configuration, privacy behavior, offline tests, and validation limits.
+
+The original support-ticket example remains at the repository root; the commands
+below run that example.
+
 ## Run
 
 Requires Node.js 22.9+ and pnpm. Dependencies are installed and pinned in the lockfile.

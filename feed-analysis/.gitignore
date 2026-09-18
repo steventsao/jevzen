@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dev-dist/
+artifacts/
+.browser-profile/
+*.zip
+.env
+.env.*
+!.env.example
+.local-settings.json

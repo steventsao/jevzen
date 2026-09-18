@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-18T06:08:01.091Z",
+  "title": "Design System: Feed Analysis",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "tonalRamp": [
+          "oklch(15% 0.00453 258.32)",
+          "oklch(26% 0.00453 258.32)",
+          "oklch(38% 0.00453 258.32)",
+          "oklch(49% 0.00453 258.32)",
+          "oklch(61% 0.00453 258.32)",
+          "oklch(72% 0.00453 258.32)",
+          "oklch(84% 0.00453 258.32)",
+          "oklch(95% 0.00453 258.32)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Reading White",
+        "tonalRamp": [
+          "oklch(15% 0.00000 0.00)",
+          "oklch(26% 0.00000 0.00)",
+          "oklch(38% 0.00000 0.00)",
+          "oklch(49% 0.00000 0.00)",
+          "oklch(61% 0.00000 0.00)",
+          "oklch(72% 0.00000 0.00)",
+          "oklch(84% 0.00000 0.00)",
+          "oklch(95% 0.00000 0.00)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "tonalRamp": [
+          "oklch(15% 0.03791 256.64)",
+          "oklch(26% 0.03791 256.64)",
+          "oklch(38% 0.03791 256.64)",
+          "oklch(49% 0.03791 256.64)",
+          "oklch(61% 0.03791 256.64)",
+          "oklch(72% 0.03791 256.64)",
+          "oklch(84% 0.03791 256.64)",
+          "oklch(95% 0.03791 256.64)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Slate Annotation",
+        "tonalRamp": [
+          "oklch(15% 0.03487 256.10)",
+          "oklch(26% 0.03487 256.10)",
+          "oklch(38% 0.03487 256.10)",
+          "oklch(49% 0.03487 256.10)",
+          "oklch(61% 0.03487 256.10)",
+          "oklch(72% 0.03487 256.10)",
+          "oklch(84% 0.03487 256.10)",
+          "oklch(95% 0.03487 256.10)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Fine Divider",
+        "tonalRamp": [
+          "oklch(15% 0.01154 252.09)",
+          "oklch(26% 0.01154 252.09)",
+          "oklch(38% 0.01154 252.09)",
+          "oklch(49% 0.01154 252.09)",
+          "oklch(61% 0.01154 252.09)",
+          "oklch(72% 0.01154 252.09)",
+          "oklch(84% 0.01154 252.09)",
+          "oklch(95% 0.01154 252.09)"
+        ]
+      },
+      "blue": {
+        "role": "primary",
+        "displayName": "Action Cobalt",
+        "tonalRamp": [
+          "oklch(15% 0.21084 265.24)",
+          "oklch(26% 0.21084 265.24)",
+          "oklch(38% 0.21084 265.24)",
+          "oklch(49% 0.21084 265.24)",
+          "oklch(61% 0.21084 265.24)",
+          "oklch(72% 0.21084 265.24)",
+          "oklch(84% 0.21084 265.24)",
+          "oklch(95% 0.21084 265.24)"
+        ]
+      },
+      "blue-light": {
+        "role": "primary",
+        "displayName": "Selection Mist",
+        "tonalRamp": [
+          "oklch(15% 0.02117 268.43)",
+          "oklch(26% 0.02117 268.43)",
+          "oklch(38% 0.02117 268.43)",
+          "oklch(49% 0.02117 268.43)",
+          "oklch(61% 0.02117 268.43)",
+          "oklch(72% 0.02117 268.43)",
+          "oklch(84% 0.02117 268.43)",
+          "oklch(95% 0.02117 268.43)"
+        ]
+      },
+      "error": {
+        "role": "secondary",
+        "displayName": "Error Clay",
+        "tonalRamp": [
+          "oklch(15% 0.13980 29.82)",
+          "oklch(26% 0.13980 29.82)",
+          "oklch(38% 0.13980 29.82)",
+          "oklch(49% 0.13980 29.82)",
+          "oklch(61% 0.13980 29.82)",
+          "oklch(72% 0.13980 29.82)",
+          "oklch(84% 0.13980 29.82)",
+          "oklch(95% 0.13980 29.82)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Pressed Cobalt",
+        "tonalRamp": [
+          "oklch(15% 0.17882 265.09)",
+          "oklch(26% 0.17882 265.09)",
+          "oklch(38% 0.17882 265.09)",
+          "oklch(49% 0.17882 265.09)",
+          "oklch(61% 0.17882 265.09)",
+          "oklch(72% 0.17882 265.09)",
+          "oklch(84% 0.17882 265.09)",
+          "oklch(95% 0.17882 265.09)"
+        ]
+      },
+      "secondary-surface": {
+        "role": "primary",
+        "displayName": "Quiet Action Surface",
+        "tonalRamp": [
+          "oklch(15% 0.02292 266.91)",
+          "oklch(26% 0.02292 266.91)",
+          "oklch(38% 0.02292 266.91)",
+          "oklch(49% 0.02292 266.91)",
+          "oklch(61% 0.02292 266.91)",
+          "oklch(72% 0.02292 266.91)",
+          "oklch(84% 0.02292 266.91)",
+          "oklch(95% 0.02292 266.91)"
+        ]
+      },
+      "secondary-ink": {
+        "role": "primary",
+        "displayName": "Quiet Action Ink",
+        "tonalRamp": [
+          "oklch(15% 0.11933 264.97)",
+          "oklch(26% 0.11933 264.97)",
+          "oklch(38% 0.11933 264.97)",
+          "oklch(49% 0.11933 264.97)",
+          "oklch(61% 0.11933 264.97)",
+          "oklch(72% 0.11933 264.97)",
+          "oklch(84% 0.11933 264.97)",
+          "oklch(95% 0.11933 264.97)"
+        ]
+      },
+      "secondary-hover": {
+        "role": "primary",
+        "displayName": "Quiet Action Hover",
+        "tonalRamp": [
+          "oklch(15% 0.03242 264.40)",
+          "oklch(26% 0.03242 264.40)",
+          "oklch(38% 0.03242 264.40)",
+          "oklch(49% 0.03242 264.40)",
+          "oklch(61% 0.03242 264.40)",
+          "oklch(72% 0.03242 264.40)",
+          "oklch(84% 0.03242 264.40)",
+          "oklch(95% 0.03242 264.40)"
+        ]
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Focus Periwinkle",
+        "tonalRamp": [
+          "oklch(15% 0.13880 266.71)",
+          "oklch(26% 0.13880 266.71)",
+          "oklch(38% 0.13880 266.71)",
+          "oklch(49% 0.13880 266.71)",
+          "oklch(61% 0.13880 266.71)",
+          "oklch(72% 0.13880 266.71)",
+          "oklch(84% 0.13880 266.71)",
+          "oklch(95% 0.13880 266.71)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field Edge",
+        "tonalRamp": [
+          "oklch(15% 0.02902 258.37)",
+          "oklch(26% 0.02902 258.37)",
+          "oklch(38% 0.02902 258.37)",
+          "oklch(49% 0.02902 258.37)",
+          "oklch(61% 0.02902 258.37)",
+          "oklch(72% 0.02902 258.37)",
+          "oklch(84% 0.02902 258.37)",
+          "oklch(95% 0.02902 258.37)"
+        ]
+      },
+      "score-track": {
+        "role": "neutral",
+        "displayName": "Measurement Track",
+        "tonalRamp": [
+          "oklch(15% 0.01088 256.70)",
+          "oklch(26% 0.01088 256.70)",
+          "oklch(38% 0.01088 256.70)",
+          "oklch(49% 0.01088 256.70)",
+          "oklch(61% 0.01088 256.70)",
+          "oklch(72% 0.01088 256.70)",
+          "oklch(84% 0.01088 256.70)",
+          "oklch(95% 0.01088 256.70)"
+        ]
+      },
+      "score-fill": {
+        "role": "neutral",
+        "displayName": "Measurement Slate",
+        "tonalRamp": [
+          "oklch(15% 0.07115 260.58)",
+          "oklch(26% 0.07115 260.58)",
+          "oklch(38% 0.07115 260.58)",
+          "oklch(49% 0.07115 260.58)",
+          "oklch(61% 0.07115 260.58)",
+          "oklch(72% 0.07115 260.58)",
+          "oklch(84% 0.07115 260.58)",
+          "oklch(95% 0.07115 260.58)"
+        ]
+      },
+      "collapsed-surface": {
+        "role": "neutral",
+        "displayName": "Folded Paper",
+        "tonalRamp": [
+          "oklch(15% 0.00452 258.32)",
+          "oklch(26% 0.00452 258.32)",
+          "oklch(38% 0.00452 258.32)",
+          "oklch(49% 0.00452 258.32)",
+          "oklch(61% 0.00452 258.32)",
+          "oklch(72% 0.00452 258.32)",
+          "oklch(84% 0.00452 258.32)",
+          "oklch(95% 0.00452 258.32)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Feed Heading",
+        "purpose": "The main lab feed heading."
+      },
+      "headline": {
+        "displayName": "Control Headline",
+        "purpose": "The control rail and popup's leading message."
+      },
+      "title": {
+        "displayName": "Section Title",
+        "purpose": "Compact section hierarchy; the rail has a smaller local override."
+      },
+      "body": {
+        "displayName": "Interface Body",
+        "purpose": "The shared UI baseline."
+      },
+      "post": {
+        "displayName": "Reading Copy",
+        "purpose": "Post text with generous leading and a bounded measure."
+      },
+      "label": {
+        "displayName": "Action Label",
+        "purpose": "Buttons and compact controls."
+      },
+      "helper": {
+        "displayName": "Helper Text",
+        "purpose": "Secondary explanations beside controls."
+      },
+      "measurement": {
+        "displayName": "Measurement Label",
+        "purpose": "The quiet labels beside probability values."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "switch-state",
+        "value": "180ms ease-out",
+        "purpose": "Switch track fill and thumb translation."
+      },
+      {
+        "name": "lab-attenuation",
+        "value": "200ms ease-out",
+        "purpose": "Opacity and saturation on lab post bodies."
+      },
+      {
+        "name": "host-attenuation",
+        "value": "180ms ease-out",
+        "purpose": "Opacity and saturation on host X/Twitter post contents."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "Transitions and animation are disabled when prefers-reduced-motion is reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-max",
+        "value": "650px"
+      },
+      {
+        "name": "medium-max",
+        "value": "1000px"
+      },
+      {
+        "name": "framed-min",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Cobalt action for applying rules, analyzing posts, or saving a connection.",
+      "html": "<button class=\"ds-primary\" type=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"m5 10 3 3 7-7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg>Analyze feed</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;min-height:40px;border:0;border-radius:7px;font:600 13px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;white-space:nowrap;cursor:pointer}.ds-primary:disabled{cursor:default;opacity:.5}.ds-primary{background:var(--blue,#244fd5);color:var(--surface,#fff)}.ds-primary:hover:not(:disabled){background:#1b3fac}.ds-primary:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Pale filled action for opening the lab or adding a post.",
+      "html": "<button class=\"ds-secondary\" type=\"button\">Open feed lab</button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;min-height:40px;border:0;border-radius:7px;font:600 13px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;white-space:nowrap;cursor:pointer}.ds-secondary:disabled{cursor:default;opacity:.5}.ds-secondary{background:#e3eafa;color:#233e82}.ds-secondary:hover:not(:disabled){background:#d4dff5}.ds-secondary:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}"
+    },
+    {
+      "name": "Text Action",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Compact reversible action beside an analyzed post.",
+      "html": "<button class=\"ds-text\" type=\"button\" aria-expanded=\"false\">Show anyway</button>",
+      "css": ".ds-text{color:var(--blue,#244fd5);font:600 12px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:0;background:none;padding:2px 0;text-decoration:none;text-underline-offset:3px;cursor:pointer}.ds-text:hover:not(:disabled){text-decoration:underline}.ds-text:disabled{cursor:default;opacity:.5}.ds-text:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}"
+    },
+    {
+      "name": "Connection Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Externally labelled compact field used for a provider key.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-provider-key\">Provider API key</label><input class=\"ds-field\" id=\"ds-provider-key\" type=\"password\" autocomplete=\"off\" placeholder=\"Paste your API key\">",
+      "css": ".ds-field-label{display:block;margin-bottom:9px;color:var(--ink,#1d2a3c);font:400 12px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-field{width:100%;background:var(--surface,#fff);color:var(--ink,#1d2a3c);border:1px solid #a9b5c7;border-radius:6px;padding:9px;font:400 14px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;caret-color:var(--blue,#244fd5)}.ds-field:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}"
+    },
+    {
+      "name": "Rules Editor",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "One free-form draft with explicit Apply, separate applied text, and nearby status feedback. This failure example retains the draft and previous applied rules; successful Apply uses muted feedback such as “Rules applied.”.",
+      "html": "<div class=\"ds-rules-editor\"><label for=\"ds-rules\">Your feed rules</label><p id=\"ds-rules-help\">Write what to turn down or keep. Change your mind whenever you like.</p><textarea id=\"ds-rules\" rows=\"7\" aria-describedby=\"ds-rules-help ds-rules-status\" required>Turn down product-launch hype.\nKeep technical evaluations.</textarea><div class=\"ds-rules-actions\"><span id=\"ds-rules-status\" role=\"status\">Unapplied changes</span><button class=\"ds-rules-apply\" type=\"button\">Apply</button></div><p class=\"ds-rules-feedback ds-rules-error\" role=\"status\">Cannot connect to Feed Analysis. Reload this page or restart the local preview.</p><details open><summary>View applied rules</summary><p>Turn down ragebait.\nKeep thoughtful criticism.</p></details></div>",
+      "css": ".ds-rules-editor{color:var(--ink,#1d2a3c);font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-rules-editor>label{display:block;font-size:13px;font-weight:650}.ds-rules-editor>p{font-size:12px;color:var(--muted,#586679);line-height:1.55;margin:6px 0 0}.ds-rules-editor textarea{display:block;width:100%;min-height:155px;max-height:450px;resize:vertical;margin-top:12px;padding:11px 12px;border:1px solid #a9b5c7;border-radius:6px;background:var(--surface,#fff);color:var(--ink,#1d2a3c);font:400 13px/1.6 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;caret-color:var(--blue,#244fd5)}.ds-rules-editor textarea::placeholder{color:var(--muted,#586679)}.ds-rules-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}.ds-rules-actions>span{font-size:11px;color:var(--muted,#586679)}.ds-rules-apply{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;min-height:40px;border:0;border-radius:7px;background:var(--blue,#244fd5);color:var(--surface,#fff);font:600 13px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer}.ds-rules-apply:hover:not(:disabled){background:#1b3fac}.ds-rules-apply:disabled{cursor:default;opacity:.5}.ds-rules-apply:focus-visible,.ds-rules-editor summary:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}.ds-rules-editor textarea:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:3px}.ds-rules-editor>.ds-rules-feedback{margin-top:10px}.ds-rules-editor>.ds-rules-feedback.ds-rules-error{color:var(--error,#9a3327)}.ds-rules-editor details{margin-top:12px;font-size:12px}.ds-rules-editor summary{font-weight:600;cursor:pointer}.ds-rules-editor details p{margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted,#586679)}"
+    },
+    {
+      "name": "Topic Filters",
+      "kind": "nav",
+      "refersTo": "topic-filter",
+      "description": "Pressable topic choices with quieter counts; selected state uses cobalt on mist.",
+      "html": "<div class=\"ds-topics\" role=\"group\" aria-label=\"Topic groups\"><button class=\"ds-topic\" type=\"button\" aria-pressed=\"true\"><span>All posts</span><span class=\"ds-topic-number\">6</span></button><button class=\"ds-topic\" type=\"button\" aria-pressed=\"false\"><span>Technology</span><span class=\"ds-topic-number\">4</span></button></div>",
+      "css": ".ds-topics{display:flex;flex-direction:column;gap:3px}.ds-topic{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border:0;border-radius:6px;background:transparent;color:var(--muted,#586679);font:400 13px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;text-align:left;cursor:pointer}.ds-topic:hover{background:#e8edf5}.ds-topic[aria-pressed=true]{background:var(--blue-light,#eaf0ff);color:var(--blue,#244fd5);font-weight:650}.ds-topic-number{font-variant-numeric:tabular-nums;font-size:12px}.ds-topic:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}@media(max-width:650px){.ds-topics{flex-direction:row;flex-wrap:wrap;gap:5px}.ds-topic{gap:12px}}"
+    },
+    {
+      "name": "Topic Label",
+      "kind": "chip",
+      "refersTo": "topic-tag",
+      "description": "An unfilled, noninteractive topic label; it is deliberately not a pill.",
+      "html": "<span class=\"ds-tag\">Technology</span>",
+      "css": ".ds-tag{font:400 10px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;color:var(--muted,#586679)}"
+    },
+    {
+      "name": "Reading Row",
+      "kind": "card",
+      "refersTo": "post-list",
+      "description": "A post within the shared white feed surface, with proportional attenuation, a fully readable reveal action, and a Why disclosure containing the exact rules applied to that result.",
+      "html": "<div class=\"ds-feed\"><article class=\"ds-post\"><div class=\"ds-post-body\"><div class=\"ds-post-head\"><span class=\"ds-avatar\" aria-hidden=\"true\">MC</span><strong>Mira Chen</strong><span class=\"ds-context\">Sample post</span></div><p class=\"ds-post-text\">We tested the new Cedar AI model on 600 support tickets. It was faster on short requests, but struggled with ambiguous refunds.</p></div><div class=\"ds-post-analysis\"><span class=\"ds-post-label\">Technology</span><button class=\"ds-post-reveal\" type=\"button\" aria-expanded=\"true\">Show anyway</button><details class=\"ds-post-explanation\" open><summary>Why?</summary><p>Jev estimates a 43% chance your applied rules call for turning down this post. These are model judgments.</p><p class=\"ds-applied-rule-copy\">Applied rules: Turn down ragebait.\nKeep thoughtful criticism.</p></details></div></article></div>",
+      "css": ".ds-feed{background:var(--surface,#fff);border:1px solid var(--line,#dce2e9);border-radius:12px;overflow:hidden;color:var(--ink,#1d2a3c);font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}.ds-post{padding:25px 27px}.ds-post-body{opacity:var(--post-opacity,0.7);filter:saturate(var(--post-saturation,0.7));transition:opacity 200ms ease-out,filter 200ms ease-out}.ds-post:hover .ds-post-body,.ds-post:focus-within .ds-post-body{opacity:1;filter:none}.ds-post-head{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1.5}.ds-avatar{width:29px;height:29px;display:grid;place-items:center;flex-shrink:0;font-size:10px;font-weight:650;background:#e4ebf4;color:#405573;border-radius:50%}.ds-context{font-size:11px;color:var(--muted,#586679);margin-left:auto}.ds-post-text{font-size:15px;line-height:1.75;margin:13px 0 0;max-width:70ch;overflow-wrap:anywhere;white-space:pre-wrap}.ds-post-analysis{margin-top:17px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:flex-end}.ds-post-label{font-size:10px;color:var(--muted,#586679)}.ds-post-reveal{color:var(--blue,#244fd5);font:600 12px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;border:0;background:none;padding:2px 0;text-underline-offset:3px;cursor:pointer}.ds-post-reveal:hover{text-decoration:underline}.ds-post-reveal:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}@media(max-width:650px){.ds-post{padding:21px 18px}.ds-post-text{font-size:14px}.ds-post-head{flex-wrap:wrap;gap:8px}}@media(prefers-reduced-motion:reduce){.ds-post-body{transition:none}}.ds-post-explanation{font-size:11px;color:var(--muted,#586679);flex-basis:100%}.ds-post-explanation summary{cursor:pointer;width:fit-content}.ds-post-explanation summary:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}.ds-post-explanation p{margin:9px 0 0;max-width:65ch;line-height:1.65}.ds-applied-rule-copy{white-space:pre-wrap;overflow-wrap:anywhere}"
+    },
+    {
+      "name": "Turn-down Probability Track",
+      "kind": "custom",
+      "refersTo": "score-track",
+      "description": "One labelled turn-down probability describes the applied rules for the post, using the existing quiet slate track and tabular value.",
+      "html": "<div class=\"ds-scores\"><div class=\"ds-score\">Turn down <b>43%</b><span class=\"ds-track\"><span style=\"width:43%\"></span></span></div></div>",
+      "css": ".ds-scores{display:flex;gap:20px;min-width:130px}.ds-score{width:130px;font:400 10px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;color:var(--muted,#586679)}.ds-score b{color:var(--ink,#1d2a3c);font-size:11px;font-variant-numeric:tabular-nums;margin-left:4px}.ds-track{display:block;height:3px;background:#e5eaf1;margin-top:5px}.ds-track>span{display:block;height:100%;background:#647da7}"
+    },
+    {
+      "name": "Filter Switch",
+      "kind": "input",
+      "refersTo": "switch",
+      "description": "Compact native checkbox exposed as a switch, with a cobalt enabled track.",
+      "html": "<label class=\"ds-switch-row\"><strong>Filter the feed</strong><input class=\"ds-switch\" type=\"checkbox\" role=\"switch\" checked></label>",
+      "css": ".ds-switch-row{display:flex;align-items:center;justify-content:space-between;gap:14px;font:400 13px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;color:var(--ink,#1d2a3c)}.ds-switch{appearance:none;width:34px;height:20px;min-width:34px;background:#a0aaba;border:0;border-radius:12px;position:relative;margin:0;cursor:pointer;transition:background .18s ease-out}.ds-switch::after{content:\"\";position:absolute;width:14px;height:14px;left:3px;top:3px;border-radius:50%;background:white;transition:transform .18s ease-out}.ds-switch:checked{background:var(--blue,#244fd5)}.ds-switch:checked::after{transform:translateX(14px)}.ds-switch:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-switch,.ds-switch::after{transition:none}}"
+    },
+    {
+      "name": "Story Choice",
+      "kind": "card",
+      "refersTo": "story-group",
+      "description": "A lightly tinted excerpt and post count; selection is carried by a cobalt border and mist fill.",
+      "html": "<button class=\"ds-story\" type=\"button\" aria-pressed=\"true\"><b>2 posts</b><span>We tested the new Cedar AI model on 600 support tickets. It was faster on short requests, but strugg…</span></button>",
+      "css": ".ds-story{display:flex;flex-direction:column;gap:5px;text-align:left;background:#eef2f9;color:var(--muted,#586679);border:1px solid transparent;border-radius:7px;padding:11px 14px;font:400 11px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;cursor:pointer}.ds-story b{color:var(--ink,#1d2a3c)}.ds-story[aria-pressed=true]{background:var(--blue-light,#eaf0ff);border-color:var(--blue,#244fd5)}.ds-story:focus-visible{outline:3px solid var(--focus,#7396f0);outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reading Lens",
+    "overview": "Feed Analysis makes a feed quieter while keeping the reader in control. Its implemented visual language pairs cool paper, deep blue-black ink, cobalt actions, and fine separators with compact system typography. The post remains the primary reading material; measurements and reversible actions sit alongside it.\n\nThe interface has the precision of a small instrument panel: understated controls, directly labelled percentages, and restrained tonal changes. This document captures the working implementation, rather than claiming an independently established brand identity. The **Operate** mode and the control-rail composition belong to the [surface brief](.impeccable/feed-analysis-surface.md); they are not a global mode or a requirement for every future Feed Analysis surface.\n\nThe installed extension presents rules, connection and display controls, and groups from an open X feed in its popup and settings. Reading and story focus happen on X itself. The separate developer lab retains the synthetic feed, composer, and reading-row examples described here; those examples and lab navigation do not appear in the shipping extension views.",
+    "keyCharacteristics": [
+      "Cool neutral surfaces with cobalt action and selection states.",
+      "Readable posts with compact, visibly separate measurement controls.",
+      "Flat surfaces divided by fine borders and spacing.",
+      "Proportional fading, reversible reveal, and explicit high-score collapse.",
+      "A geometric SVG mark made from three shortening horizontal strokes."
+    ],
+    "rules": [
+      {
+        "name": "The Measurement Rule",
+        "body": "Keep the turn-down probability track in the existing slate treatment; its label and percentage describe how the applied rules fit a post, not a traffic-light verdict about the author.",
+        "section": "colors"
+      },
+      {
+        "name": "The Text Leads Rule",
+        "body": "Keep post copy larger and more generously spaced than measurements and metadata; avoid turning the probability readout into the headline of each post.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Continue the existing tonal and border hierarchy when extending these controls; introduce elevation only for a future component whose interaction requires it.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve readable post text and a fully visible route to reveal any filtered post.",
+      "Do show one named turn-down probability with a tabular percentage and a quiet slate track.",
+      "Do keep draft status and Apply success or error feedback beside the rules editor, and show the exact applied rules in each post’s Why disclosure.",
+      "Do reuse the implemented cobalt action states, cool paper surfaces, fine borders, and system font stack.",
+      "Do keep keyboard focus visible and honor reduced-motion preferences.",
+      "Do let X/Twitter overlays inherit the host theme while the lab, popup, and settings use their own light surfaces.",
+      "Do treat screenshots as verification evidence and the geometric inline SVG as the current app mark."
+    ],
+    "donts": [
+      "Don't present model probability as a factual verdict about the author.",
+      "Don't fade the measurement controls or reveal action with the post body.",
+      "Don't hide unscored or failed posts as though they had received a high score.",
+      "Don't introduce decorative shadows or arbitrary accent colors into the existing control surfaces.",
+      "Don't promote the surface's Operate mode or its desktop rail into a permanent global product identity.",
+      "Don't describe this implementation as shipping raster imagery, a custom font, or a discovered topic ontology."
+    ]
+  }
+}
