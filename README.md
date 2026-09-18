@@ -7,7 +7,7 @@ their original height, so the timeline stays in place. Reveal any post with one 
 Built with [TypeSafe Jev](https://docs.typesafe.ai/) and [Effect](https://effect.website/).
 Bring your own API key. No hosted backend.
 
-[![jevzen replacing an X post with a cat photo](docs/demo/preview.jpg)](docs/demo/jevzen.mp4)
+[![Animated demo of jevzen switching an X post to a cat photo](docs/demo/jevzen.gif)](docs/demo/jevzen.mp4)
 
 [Watch the 14-second demo](docs/demo/jevzen.mp4) · [Extension documentation](feed-analysis/README.md) · [MIT license](LICENSE)
 
